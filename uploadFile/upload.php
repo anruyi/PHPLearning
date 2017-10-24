@@ -1,8 +1,8 @@
 <?php
 /**
- * 封装成函数的[单/多]文件上传
+ * 一、封装成函数
+ * 二、[单/多]文件上传
  */
-
 
 /**
  * @param $fileInfo
@@ -124,8 +124,6 @@ function uploadFile($fileInfo,$uploadPath = 'uploads',$allowExtension = array('j
 }
 
 $files = getFiles();
-
-print_r($files);
 
 foreach ($files as $fileInfo) {
     uploadFile($fileInfo,'uploads');

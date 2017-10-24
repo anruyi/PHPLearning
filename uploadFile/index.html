@@ -3,24 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>upload</title>
+    <style>
+        form {
+            margin: 4px auto 4px auto;
+        }
+    </style>
 </head>
 <body>
-<form action="upload.class.php" method="post" enctype="multipart/form-data">
 
-    <!--<input type="file" name="myFile[]">-->
-    <!--<br>-->
-    <!--<br>-->
-    <!--<input type="file" name="myFile[]">-->
-    <!--<br>-->
-    <!--<br>-->
-    <!--<input type="file" name="myFile[]">-->
-    <!--<br>-->
-    <!--<br>-->
-    <input type="file" name="myFile" multiple="true">
+<t1>这是一个DEMO</t1>
+<form action="upload.class.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
+    <t1>多文件，类上传</t1>
+    <br>
+    <t2>老版本</t2>
+    <br>
+    <input type="file" name="myFile[]">
+    <br>
+    <br>
+    <input type="file" name="myFile[]">
+    <br>
+    <br>
+    <input type="file" name="myFile[]">
+    <br>
+    <br>
+    <t2>H5新元素</t2>
+    <br>
+    <input type="file" name="myFile[]" multiple="multiple">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+
+
+<form action="upload.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
+    <t1>多文件，方法上传</t1>
+    <br>
+    <t2>老版本</t2>
+    <br>
+    <input type="file" name="myFile[]">
+    <br>
+    <br>
+    <input type="file" name="myFile[]">
+    <br>
+    <br>
+    <input type="file" name="myFile[]">
+    <br>
+    <br>
+    <t2>H5新元素</t2>
+    <br>
+    <input type="file" name="myFile[]" multiple="multiple">
     <br>
     <br>
     <input type="submit">
 
 </form>
+
+
+<form action="upload.class.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
+    <t1>单文件，类上传</t1>
+    <br>
+    <input type="file" name="myFile">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+
+
+<form action="upload.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
+    <t1>单文件，方法上传</t1>
+    <br>
+    <input type="file" name="myFile">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+
 </body>
 </html>

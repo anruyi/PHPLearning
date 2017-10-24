@@ -14,99 +14,110 @@ namespace paging;
  */
 class Paging
 {
-    private $table = 'phptest';
+    /**
+     * @var string
+     * 简单的数据库连接，写你自己的喽
+     */
+    private $dbname = 'phptest';
+
+    private $username = 'phptest';
+
+    private $dbpsw = '123456';
 
     private $sql = "select * from admin";
 
-
+    /**
+     * 演示使用showPage方法：
+     * 准备部分：
+     *      ①连接数据库，②设置基本参数
+     * 第一部分：
+     *      显示数据
+     * 第二部分：
+     *      显示分页页码
+     */
     function Paging()
     {
-
-        $pdo = $this->linkSQL();
+        /**
+         * 1. ①连接数据库，②并设置必要的参数
+         */
+        $pdo = new \PDO("mysql:host=localhost;dbname={$this->dbname}",$this->username,$this->dbpsw);
+        $pdo->query("set character set 'gbk'");
+        if(!$pdo){echo "数据库失败";}
         $res = $pdo->query($this->sql);
 
-        /**
-         * 总数据，即数据总量
-         */
+        /**总数据条数*/
         $totalRows = $res->rowCount();
 
-        /**
-         * 页面承载容量
-         */
+        /**页面承载容量*/
         $pageSize = 2;
 
-        /**
-         * 浏览的页面
-         */
+        /**用户正在浏览的页面，get方法获取，并且做简单的判断*/
         $page = $_GET['page']?$_GET['page']:1;
         if($page>ceil($totalRows/$pageSize)) $page = ceil($totalRows/$pageSize);
         if($page<1||$page==null||!is_numeric($page)) $page = 1;
 
-        /**
-         * 页面总数
-         */
+        /**页面数量*偏移量[用户一共阅览到第多少条记录]*/
         $totalPage = $totalRows/$pageSize;
-
-        /**
-         * 偏移量
-         * 简单的来说，就是每翻一页需要读取多少条数据
-         * ps:最开始0，能理解？就是没有任何偏移量的意思
-         */
         $offset = ($page-1)*$pageSize;
 
-
-        $this->showPage($page,$totalPage);
-
         /**
-         * 显示数据
+         * 2. 显示数据
          */
         $sql1 = "SELECT * FROM admin LIMIT {$offset},{$pageSize}";
         $res = $pdo->query($sql1);
         foreach($res as $key=>$row){
-            echo "====================第{$key}条数据================="."<br>";
+            echo "====================第{$row['adminID']}条数据================="."<br>";
             print_r($row);
-            echo "<br>";
+            echo "<br><br>";
         }
+
+        /**
+         * 3. 显示分页页码
+         */
+        echo $this->showPage($page,$totalPage);
 
     }
 
-    public function showPage($page,$totalPage,$where=null)
+    /**
+     * @param $page 当前页面
+     * @param $totalPage 总页面数目
+     * @param null $where 查询条件
+     * @return string 返回正确的页码标签
+     * 显示正确的页码标签
+     * 【页面分页·基本步骤】
+     * 一、获取基本数据
+     *      （一）当前页面url
+     *      （二）查询条件where
+     *      （三）页面描述
+     *      （四）保存所有页码allPage
+     *      （五）当前所需要显示的九个页码pageStr
+     * 二、计算出所有分页
+     * 三、整理出当前应显示的部分页码
+     * 四、正确的返回所需要的页码字符串
+     */
+    public function showPage($page,$totalPage,$where=null,$sep='')
     {
         /**
-         * 获取本页面的连接
+         * 一、获取基本数据
          */
         $url = $_SERVER['PHP_SELF'];
-
-        /**
-         * 筛选条件
-         */
         $where==null?null:"&".$where;
 
-        /**
-         * 首页面
-         * 尾页面
-
-         * 上一页
-         * 下一页
-         */
-        $home = ($page==1)?'[Home]':"<a href='{$url}?page=1{$url}'>".'[Home]'."</a>";
-        $last = ($page==$totalPage)?"[LAST]":"<a href='{$url}?page={$totalPage}'>[LAST]</a>";
-
+        /** 首页面* 尾页面* 上一页* 下一页**/
+        $home = ($page==1)?'[首页]':"<a href='{$url}?page=1{$url}'>".'[首页]'."</a>";
+        $last = ($page==$totalPage)?"[尾页]":"<a href='{$url}?page={$totalPage}'>[尾页]</a>";
         $prev = $page==1?"[上一页]":"<a href={$url}?page=".($page-1).".{$url}>[上一页]</a>";
         $next = $page==$totalPage?"[下一页]":"<a href={$url}?page=".($page+1).">[下一页]</a>";;
 
-        /**
-         * 本次需要的前十个页码
-         */
-        $p = null;
-
-        /**
-         * 所有页码保存
-         */
         $allPage = array();
+        $pageStr = null;
 
         /**
-         * 保存所有page页面
+         * 二、保存所有page页面
+         * echo "<br>".$home.$prev;
+         * for ($i=1;$i<=$totalPage;$i++) {
+         * echo $allPage[$i];   }
+         * echo "<br>".$next.$last."<br>";
          */
         for ($i=1;$i<=$totalPage;$i++) {
             if($page==$i)
@@ -116,60 +127,25 @@ class Paging
         }
 
         /**
-         * 想办法截取最需要的十个
-         */
-        for ($i=1;$i<=$totalPage;$i++) {
-            if($page==$i)
-                $p .= "[{$i}]";
-            else
-                $p .= "<a href='{$url}?page={$i}'>[{$i}]</a>";
-        }
-
-        /**
-         * 显示输出所有页码
-         */
-        echo "<br>".$home.$prev;
-        for ($i=1;$i<=$totalPage;$i++) {
-            echo $allPage[$i];
-        }
-        echo "<br>".$next.$last."<br>";
-
-        /**
-         * 截取部分页码
+         * 三、截取部分页码保存
          */
         $pageStr = "<br>".$home.$prev;
-        echo "<br>".$home.$prev;
         for ($i=1;$i<=$totalPage;$i++) {
             if($page-$i<4&&$page-$i>=0 || $i-$page<4&&$page-$i<0){
-                echo $allPage[$i];
                 $pageStr .= $allPage[$i];
             }
         }
-        echo $next.$last."<br>";
-
         $pageStr .= $next.$last."<br>";
-        echo $pageStr;
+
+        /**
+         * 四、正确的返回所需要的页码字符串
+         */
         return $pageStr;
-    }
-
-    public function linkSQL()
-    {
-        $pdo = new \PDO("mysql:host=localhost;dbname=phptest","phptest","123456");
-        $pdo->query("set character set 'gbk'");
-        if($pdo){
-            $ret = $pdo->query($this->sql);
-//            foreach($ret as $row){
-//                print_r($row);
-//                echo "<br>";
-//            }
-
-        } else {
-            echo 'no';
-        }
-
-        return $pdo;
     }
 }
 
+/**
+ * 实例化
+ */
 $pag = new Paging();
 $pag->Paging();
