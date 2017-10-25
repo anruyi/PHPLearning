@@ -1,46 +1,24 @@
-<?php
-include "captcha.php";
-//phpinfo();
+<html>
+    <head>
+        <title>captcha</title>
+    </head>
+    <body>
+        <form action="check.php" method="post" >
+            <img id="img" src="http://test.xxx.com/pictureProcess/captcha.php?r=<?php echo rand()?>" alt="" >
+            <a href="#" onclick="reimg()">刷新</a>
+            <br>
+            <br>
+            <input type="text" name="captcha">
+            <br>
+            <br>
+            <input type="submit" value="submit">
+        </form>
 
-/**
- * 载入图片
- */
-//$imgSrc = "images/boy_4.jpg";
-//
-//$imgInfo = getimagesize($imgSrc);
-//
-//$imgType = image_type_to_extension($imgInfo[2],false);
-//
-//$function1 = "imagecreatefrom{$imgType}";
-//
-//$image = $function1($imgSrc);
-//
-///**
-// * 处理图片
-// */
-//$color = imagecolorallocatealpha($image,255,255,255,50);
-//
-//$fontFile = "fonts/simfang.ttf";
-//
-//$text = "imooc";
-//
-//imagettftext($image,20,0,12,12, $color, $fontFile, $text);
-//
-///**
-// * 输出图片
-// */
-//header("Content-type:".$imgInfo[mime]);
-//
-//imagejpeg($image);
-//
-//$function2 = "image{$imgType}";
-//
-//$function2($image);
-//
-///**
-// * 销毁图片，节省开销
-// */
-//
-//imagedestroy($image);
-
-$pic = new captcha();
+        <script>
+            function reimg(){
+                var img = document.getElementById("img");
+                img.src = "captcha.php?r=" + Math.random();
+            }
+        </script>
+    </body>
+</html>
