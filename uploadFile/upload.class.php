@@ -52,6 +52,7 @@ class Upload
      * @return array
      * 一、获取多文件的三位数组并转换成二维数组
      * 二、自动过滤单文件情况
+     * 三、返回所需要形态的数组files
      */
     function getFiles()
     {
