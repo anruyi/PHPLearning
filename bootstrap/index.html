@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css">
+
+    <script src="bootstrap4/js/jquery-3.2.1.slim.min.js"></script>
+    <!--<script src="bootstrap4/js/bootstrap.js"></script>-->
+    <script src="bootstrap4/js/bootstrap.bundle.js"></script>
+
+    <title>Bootstrap</title>
+</head>
+<body>
+    <h1>Bootstrap学习第一章-基础</h1>
+
+
+    <div class="container-fluid bg-dark text-white">
+        <h2>一 container-fluid</h2>
+        <h1>你好,标题2!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At autem deserunt ea esse ex excepturi molestias ratione. Aliquid commodi est ipsam nihil odio quo, similique suscipit voluptas? Amet, expedita voluptatum?</p>
+    </div>
+
+    <div class="container">
+        <h2>二 container</h2>
+        <h1>你好,标题!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur consequatur corporis deserunt earum error fugiat hic, laboriosam mollitia nesciunt officiis porro, provident quae quidem quis rerum saepe tempore veniam.</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2>三 栅格系统</h2>
+            <div class="col">a</div>
+            <div class="col">a</div>
+            <div class="col">a</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci asperiores debitis distinctio dolores eius ipsam nam natus necessitatibus neque optio quae sequi totam, ullam velit, veniam vitae voluptas voluptates.</div>
+            <div class="col-sm-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores doloribus eligendi fugiat iste natus repellendus reprehenderit sapiente unde voluptatibus. Adipisci commodi corporis dolorem earum molestiae nulla officia, quibusdam recusandae tempore.</div>
+            <div class="col-sm-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dignissimos dolorem dolores est eum fugiat, id laboriosam molestiae mollitia officia officiis quaerat quasi quidem sequi, similique totam veniam voluptatem, voluptatibus!
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2>四 字体大小</h2>
+        <h1>h1 Bootstrap 标题 (2.5rem = 40px)</h1>
+        <h2>h2 Bootstrap 标题 (2rem = 32px)</h2>
+        <h3>h3 Bootstrap 标题 (1.75rem = 28px)</h3>
+        <h4>h4 Bootstrap 标题 (1.5rem = 24px)</h4>
+        <h5>h5 Bootstrap 标题 (1.25rem = 20px)</h5>
+        <h6>h6 Bootstrap 标题 (1rem = 16px)</h6>
+    </div>
+
+    <div class="container">
+        <h2>五 标题大小</h2>
+        <h1 class="display-1">display-1</h1>
+        <h1 class="display-2">display-2</h1>
+        <h1 class="display-3">display-3</h1>
+        <h1 class="display-4">display-4</h1>
+    </div>
+
+    <div class="container">
+        <h2>六 文本颜色</h2>
+        <p class="text-muted">柔和的文本</p>
+        <p class="text-primary">重要的文本</p>
+        <p class="text-success">执行成功的文本</p>
+        <p class="text-info">代表一些提示信息的文本</p>
+        <p class="text-warning">警告文本</p>
+        <p class="text-danger">危险操作文</p>
+        <p class="text-secondary">副标题</p>
+        <p class="text-dark">深灰色文字</p>
+        <p class="text-light">浅灰色文本（白色背景上看不清楚）</p>
+        <p class="text-white">白色文本（白色背景上看不清楚）</p>
+    </div>
+
+    <div class="container">
+        <h2>七 链接颜色</h2>
+        <h2>文本颜色</h2>
+        <a href="#" class="text-muted">柔和的链接。</a>
+        <br>
+        <a href="#" class="text-primary">主要链接。</a>
+        <br>
+        <a href="#" class="text-success">成功链接。</a>
+        <br>
+        <a href="#" class="text-info">信息文本链接。</a>
+        <br>
+        <a href="#" class="text-warning">警告链接。</a>
+        <br>
+        <a href="#" class="text-danger">危险链接。</a>
+        <br>
+        <a href="#" class="text-secondary">副标题链接。</a>
+        <br>
+        <a href="#" class="text-dark">深灰色链接。</a>
+        <br>
+        <a href="#" class="text-light">浅灰色链接。</a>
+    </div>
+
+    <div class="container">
+        <h2>八 背景颜色</h2>
+        <p class="bg-primary text-white">重要的背景颜色。</p>
+        <p class="bg-success text-white">执行成功背景颜色。</p>
+        <p class="bg-info text-white">信息提示背景颜色。</p>
+        <p class="bg-warning text-white">警告背景颜色</p>
+        <p class="bg-danger text-white">危险背景颜色。</p>
+        <p class="bg-secondary text-white">副标题背景颜色。</p>
+        <p class="bg-dark text-white">深灰背景颜色。</p>
+        <p class="bg-light text-dark">浅灰背景颜色。</p>
+    </div>
+
+    <div class="container">
+        <h2>九 表格</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>td file1</th>
+                <th>td file2</th>
+                <th>td file3</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>td file1</td>
+                <td>td file2</td>
+                <td>td file3</td>
+            </tr>
+            <tr>
+                <td>td file1</td>
+                <td>td file2</td>
+                <td>td file3</td>
+            </tr>
+        </table>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+            </tr>
+            <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+            </tr>
+            <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <img src="http://www.runoob.com/bootstrap4/bootstrap4-images.html" alt="">
+    </div>
+
+    <div class="jumbotron bg-dark">
+        <div class="container">
+            <h2 class="text-white">十 方角巨幕</h2>
+            <p class="text-white">巨幕</p>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid bg-dark">
+        <div class="container">
+            <p class="text-white">巨幕</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>十一 信息框</h2>
+        <div class="alert alert-success">
+            <strong>success</strong>
+            <a href="http://ciqufu.com">the message</a>
+        </div>
+
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>success</strong>
+
+        </div>
+
+        <div class="alert alert-success fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+            <strong>success</strong>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>十二 按钮</h2>
+        <button type="button" class="btn">基本按钮</button>
+        <br>
+        <button type="button" class="btn btn-primary">主要按钮</button>
+        <br>
+        <button type="button" class="btn btn-secondary">次要按钮</button>
+        <br>
+        <button type="button" class="btn btn-success">成功按钮</button>
+        <br>
+        <button type="button" class="btn btn-info">信息按钮</button>
+        <br>
+        <button type="button" class="btn btn-warning">警告按钮</button>
+        <br>
+        <button type="button" class="btn btn-dark">黑色按钮</button>
+        <br>
+        <button type="button" class="btn btn-light">浅色按钮</button>
+        <br>
+        <button type="button" class="btn btn-link">链接按钮</button>
+
+        <h2>十三 特殊按钮</h2>
+        <a href="JavaScript:void(0)" class="btn btn-info" >链接按钮</a>
+        <button type="button" class="btn btn-info">按钮</button>
+        <input type="button" class="btn btn-info" value="输入框按钮">
+        <input type="submit" class="btn btn-info" value="提交按钮">
+
+        <h2>十四 其他按钮</h2>
+        <button type="button" class="btn btn-outline-primary">主要按钮</button>
+        <br>
+        <button type="button" class="btn btn-primary btn-lg">大号按钮</button>
+        <button type="button" class="btn btn-primary">默认按钮</button>
+        <button type="button" class="btn btn-primary btn-sm">小号按钮</button>
+        <br>
+        <button type="button" class="btn btn-primary btn-block">块级按钮</button>
+
+        <button type="button" class="btn btn-primary active">点击后的按钮</button>
+        <button type="button" class="btn btn-primary disabled">禁止点击的按钮</button>
+        <a href="#" class="btn btn-primary disabled">禁止点击的链接</a>
+
+        <h2>按钮组</h2>
+        <div class="btn-group">
+            <button class="btn btn-success">成功按钮</button>
+            <button class="btn btn-success">成功按钮</button>
+        </div>
+        <div class="btn-group btn-group-lg">
+            <button class="btn btn-success">成功按钮</button>
+            <button class="btn btn-success">成功按钮</button>
+        </div>
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-primary">Apple</button>
+            <button type="button" class="btn btn-primary">Samsung</button>
+            <button type="button" class="btn btn-primary">Sony</button>
+        </div>
+        <div class="btn-group-vertical btn-group-sm">
+            <button type="button" class="btn btn-primary">Apple</button>
+            <button type="button" class="btn btn-primary">Samsung</button>
+            <button type="button" class="btn btn-primary">Sony</button>
+        </div>
+    </div>
+
+</body>
+</html>
