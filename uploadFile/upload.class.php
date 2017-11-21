@@ -72,6 +72,7 @@ class Upload
                 }
             }
         }
+        var_dump($files);
         return $files;
     }
 
@@ -85,23 +86,23 @@ class Upload
             if ($this->fileInfo['error'] > 0) {
                 switch ($this->fileInfo['error']) {
                     case 1:
-                        $this->msg =  '上传文件超过PHP配置文件中upload_max_fileSize选项';
+                        $this->msg =  '代码1,上传文件超过PHP配置文件中upload_max_fileSize选项';
                         break;
                     case 2:
-                        $this->msg =  '超过MAX_FILE_SIZE限制大小';
+                        $this->msg =  '代码2,超过MAX_FILE_SIZE限制大小';
                         break;
                     case 3:
-                        $this->msg =  '文件部分上传';
+                        $this->msg =  '代码3,文件部分上传';
                         break;
                     case 4:
-                        $this->msg =  '没有选择上传文件';
+                        $this->msg =  '代码4,没有选择上传文件';
                         break;
                     case 6:
-                        $this->msg =  '没有找到上传临时目录';
+                        $this->msg =  '代码6,没有找到上传临时目录';
                         break;
                     case 7:
                     case 8:
-                        $this->msg =  '系统错误';
+                        $this->msg =  '代码8,系统错误';
                         break;
                 }
             } else {
@@ -109,7 +110,7 @@ class Upload
                 return true;
             }
         } else {
-            $this->msg = '文件上传出错';
+            $this->msg = '文件上传出错(不存在文件信息)';
         }
     }
 
@@ -149,7 +150,7 @@ class Upload
     protected function checkMime()
     {
         if(!in_array($this->fileInfo['type'],$this->allowMime)) {
-            $this->msg = '不允许该文件类型的上传end';
+            $this->msg = '不允许该文件类型的上传';
             return false;
         } else {
             return true;
@@ -273,7 +274,11 @@ class Upload
 /**
  * 请及时修改前端[单/多]文件情况
  */
-$file = new Upload();
+
+$mime = $allowMime=array('image/jpeg','image/png','image/gif','text/plain','text/markdown','application/octet-stream');
+$extension = array('jpeg','jpg','png','gif','txt','md');
+
+$file = new Upload('myFile',2097152,'./uploads',false,$extension,$mime);
 
 /**
  * 单文件调用方法，一般即便是单文件，也可以用多文件方法上传，但是能节约一丁点资源

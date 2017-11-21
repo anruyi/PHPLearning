@@ -6,61 +6,82 @@
     <style>
         form {
             margin: 4px auto 4px auto;
+            border: solid #555 3px;
+        }
+
+        div {
+            margin: 4px 1px;
+            border: solid 2px #777;
+        }
+
+        t1 {
+            color: #fff;
+            display: block;
+            background-color: #999;
         }
     </style>
 </head>
 <body>
 
-<t1>这是一个DEMO</t1>
-<form action="upload.class.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
-    <t1>多文件，类上传</t1>
+<t1>多文件</t1>
+<form action="upload.class.php" method="post" enctype="multipart/form-data" >
+    <t2>多文件，调用类上传</t2>
     <br>
-    <t2>老版本</t2>
-    <br>
-    <input type="file" name="myFile[]">
-    <br>
-    <br>
-    <input type="file" name="myFile[]">
-    <br>
-    <br>
-    <input type="file" name="myFile[]">
-    <br>
-    <br>
-    <t2>H5新元素</t2>
-    <br>
-    <input type="file" name="myFile[]" multiple="multiple">
-    <br>
-    <br>
-    <input type="submit">
+    <div>
+        <t3>老版本</t3>
+        <br>
+        <input type="file" name="myFile[]">
+        <br>
+        <br>
+        <input type="file" name="myFile[]">
+        <br>
+        <br>
+        <input type="file" name="myFile[]">
+        <br>
+        <br>
+    </div>
+    <div>
+        <t3>H5新元素</t3>
+        <br>
+        <input type="file" name="myFile[]" multiple="multiple">
+        <br>
+        <br>
+        <input type="submit">
+    </div>
 </form>
 
 
-<form action="upload.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
-    <t1>多文件，方法上传</t1>
-    <br>
-    <t2>老版本</t2>
-    <br>
-    <input type="file" name="myFile[]">
-    <br>
-    <br>
-    <input type="file" name="myFile[]">
-    <br>
-    <br>
-    <input type="file" name="myFile[]">
-    <br>
-    <br>
-    <t2>H5新元素</t2>
-    <br>
-    <input type="file" name="myFile[]" multiple="multiple">
-    <br>
-    <br>
-    <input type="submit">
-
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <t2>多文件，调用方法上传</t2>
+    <div>
+        <br>
+        <t3>老版本</t3>
+        <br>
+        <input type="file" name="myFile[]">
+        <br>
+        <br>
+        <input type="file" name="myFile[]">
+        <br>
+        <br>
+        <input type="file" name="myFile[]">
+        <br>
+        <br>
+    </div>
+    <div>
+        <t3>H5新元素</t3>
+        <br>
+        <input type="file" name="myFile[]" multiple="multiple">
+        <br>
+        <br>
+        <input type="submit">
+    </div>
 </form>
 
-
-<form action="upload.class.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
-    <t1>单文件，类上传</t1>
+<br>
+<br>
+<t1>单文件</t1>
+<form action="upload.class.php" method="post" enctype="multipart/form-data">
+    <t2>单文件，类上传</t2>
     <br>
     <input type="file" name="myFile">
     <br>
@@ -69,8 +90,8 @@
 </form>
 
 
-<form action="upload.php" method="post" enctype="multipart/form-data" style="border: solid #777 3px">
-    <t1>单文件，方法上传</t1>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <t2>单文件，方法上传</t2>
     <br>
     <input type="file" name="myFile">
     <br>
