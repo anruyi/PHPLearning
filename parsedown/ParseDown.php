@@ -2,7 +2,7 @@
 
 #
 #
-# Parsedown
+# ParseDown
 # http://parsedown.org
 #
 # (c) Emanuil Rusev
@@ -10,6 +10,8 @@
 #
 # For the full license information, view the LICENSE file that was distributed
 # with this source code.
+#
+# 2017-11,CYLeft add a function of parse hexo title author and some else
 #
 #
 
@@ -32,16 +34,59 @@ class ParseDown
         # remove surrounding line breaks
         $text = trim($text, "\n");
 
-        # split text into lines
+        # split text into lines //拆分成行
         $lines = explode("\n", $text);
 
+        # markdown file header
+        $this->header($lines);
+
         # iterate through lines to identify blocks
+        # 遍历lines解析块
         $markup = $this->lines($lines);
 
         # trim line breaks
         $markup = trim($markup, "\n");
 
         return $markup;
+    }
+
+    #
+    # add some others case
+    #
+
+    function header($text)
+    {
+        $massage = array();
+
+        $markLine = -1;
+
+        # make sure no definitions are set
+        $this->DefinitionData = array();
+
+        # standardize line breaks
+        $text = str_replace(array("\r\n", "\r"), "\n", $text);
+
+        # remove surrounding line breaks
+        $text = trim($text, "\n");
+
+        # split text into lines //拆分成行
+        $lines = explode("\n", $text);
+
+        foreach ($lines as $key=>$line)
+        {
+            if ($line == '---')
+            {
+                $markLine = -$markLine;
+                continue;
+            }
+
+            if ($markLine == 1) {
+                $massage[strstr($line,':',true)] = ltrim(strstr($line,' ',false));
+            } else {
+                break;
+            }
+        }
+        return $massage;
     }
 
     #

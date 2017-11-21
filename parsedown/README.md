@@ -1,3 +1,8 @@
+---
+title: readme
+date: 1997-01-12 12:12:24
+---
+
 > You might also like [Caret](https://caret.io?ref=parsedown) - our Markdown editor for Mac / Windows / Linux.
 
 ## Parsedown
@@ -31,7 +36,11 @@ Include `Parsedown.php` or install [the composer package](https://packagist.org/
 ``` php
 $Parsedown = new Parsedown();
 
-echo $Parsedown->text('Hello _Parsedown_!'); # prints: <p>Hello <em>Parsedown</em>!</p>
+# prints: <p>Hello <em>Parsedown</em>!</p>
+echo $Parsedown->text('Hello _Parsedown_!'); 
+
+# new function,return a array about title author and some else
+Parsedown->header();
 ```
 
 More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [this video tutorial](http://youtu.be/wYZBY8DEikI).
